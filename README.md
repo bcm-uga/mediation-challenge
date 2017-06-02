@@ -3,10 +3,10 @@ Repository for the [Epigenetic and High-Dimension Mediation Data Challenge](http
 
 ##  1. Install software
 
-### Installing R and R-studio
+### Install R and R-studio
 To participate to the challenge, you need to install [R](https://cran.r-project.org/) on your computer. To make R easier to use, we suggest to install [RStudio](https://www.rstudio.com/), which is an integrated development environment (IDE) for R.
 
-### Installing R packages
+### Install R packages
 To install R packages that are useful for the data challenge, copy and paste in R the following pieces of code
 
 ```r
@@ -59,17 +59,17 @@ To participate to the challenge, you should form teams. A team can be composed o
 
 The objective of the two data challenges is to find markers that are involved in the [mediation](https://en.wikipedia.org/wiki/Mediation_(statistics)) of a health outcome by a factor of exposure. For instance, you are asked to find, in the 2nd data challenge, the methylation markers that are involved in the mediation of skin cancer by sun exposure.
 
-To submit a list of markers involved in mediation, you should use [the submission website](http://176.31.253.205/shiny/mediation-challenge/shiny-app/). An example of submission file containing a list of markers involved in mediation is contained in the file [mysubmission.txt]()). 
+To submit a list of markers involved in mediation, you should use [the submission website](http://176.31.253.205/shiny/mediation-challenge/shiny-app/). An example of submission file containing a list of markers involved in mediation is contained in the file [mysubmission.txt](https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/mysubmission.txt). 
 
 ## 5. Evaluation
 
-The ranking of the participants will be based on the [F1 score](https://en.wikipedia.org/wiki/F1_score). The F1 score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved mediation, whic are found in the submitted list. The F1 score is equal to the harmonic mean of the power and of one minus the false discovery rate
+The ranking of the participants will be based on the [F1 score](https://en.wikipedia.org/wiki/F1_score). The F1 score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved in mediation, which are found in the submitted list. The F1 score is equal to the harmonic mean of the power and of one minus the false discovery rate
 
 ![equation](http://latex.codecogs.com/gif.latex?%24%24%20F_1%20%3D%202%20%5Ccdot%20%5Cfrac%7B%5Cmathrm%7Bpower%7D%20%5Ccdot%20%281-%5Cmathrm%7BFDR%7D%29%7D%7B%5Cmathrm%7Bpower%7D%20&plus;%20%281-%5Cmathrm%7BFDR%7D%29%7D.%20%24%24)
 ## 6. Miscellaneous
 
-We provide some files below to show examples of mediation analysis in R.
+We provide some files to show examples of mediation analysis in R.
 
-[Baron and Kenny procedure and Sobel test in R](https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/Baron_Kenny_Sobel.Rmd) 
+[Baron and Kenny procedure and Sobel test in R](https://github.com/BioShock38/mediation-challenge/blob/master/Baron_Kenny_Sobel.Rmd) 
 
 
