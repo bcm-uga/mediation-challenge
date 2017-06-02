@@ -1,0 +1,55 @@
+---
+title: "Baron_Kenny_Sobel.Rmd"
+author: "Michael Blum"
+date: "June, 2, 2017"
+output: html_document
+---
+# Mediation with a single mediator
+
+## Read the data file stored on github
+
+```{r}
+require(data.table)
+nb_med<-5000
+data1<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge1.txt",header=TRUE,data.table=FALSE)
+print(dim(data1))
+summary(data1$exposure)
+summary(data1$phenotype)
+```
+
+## Baron and Kenny procedure 
+
+We show how to perform Baron and Kenny procedure to test that the effect of exposure on the phenotype is mediated by the first "epigenetic" marker.
+
+We start by [Step 1 of Baron and Kenny method](https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation) to test that the exposure is a significant predictor of the phenotype.
+
+```{r}
+step1<-summary(lm(phenotype~exposure,data=data1))
+```
+
+We find that the effect of*exposure* on  *phenotype* is significant because the P-value is equal to `r coef(step1)[2,"Pr(>|t|)"]`.
+
+Then, we perform [Step 2 and 3 of Baron and Kenny procedure](https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation).
+```{r}
+x<-1
+p_step2<-coef(summary(lm(data1[,x]~data1$exposure)))[2,"Pr(>|t|)"]
+p_step3<-coef(summary(lm(data1$phenotype~data1[,x]+data1$exposure)))[2,"Pr(>|t|)"]
+cat("P-value Step 2 ",p_step2,", P-value Step 3 ",p_step3,"\n")
+```
+Because there is one P-value larger than $0.05$, we conclude that there is no evidence that the first marker is involved in mediation.
+
+## Baron and Kenny (B&K) procedure with a Sobel test
+An additional criterion is sometimes included in Baron and Kenny procedure (see [e.g. Kupers et al. 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/). The Sobel statistic is computed to test that the product of the two regression coefficients $\beta_{21}$ and $\beta_{32}$ (see [Wikipedia notation](https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation)) is different from 0  ($H_0:\beta_{21} \times \beta_{32}=0$).
+
+```{r}
+require(multilevel)
+z_sobel<-sobel(pred=data1$exposure,med=data1[,x],out=data1$phenotype)$z.value
+p_sobel<-2*pnorm(abs(z_sobel),lower.tail=F)
+cat("P-value Sobel",p_sobel,"\n")
+```
+Same conclusion as before.
+
+# Mediation with multiple mediators
+
+Now, you should analyse the full data. Some R packages might be useful (or not) including [fdrtool](https://cran.r-project.org/web/packages/fdrtool/index.html), and [qvalue](http://bioconductor.org/packages/release/bioc/html/qvalue.html), [hima](https://github.com/YinanZheng/HIMA).
+
