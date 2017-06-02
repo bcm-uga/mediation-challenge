@@ -1,12 +1,12 @@
 ---
-title: "Baron_Kenny_Sobel.Rmd"
+title: "Baron and Kenny procedure and Sobel test"
 author: "Michael Blum"
 date: "June, 2, 2017"
 output: html_document
 ---
 # Mediation with a single mediator
 
-## Read the data file stored on github
+### Read the data file stored on github
 
 ```{r}
 require(data.table)
@@ -17,7 +17,7 @@ summary(data1$exposure)
 summary(data1$phenotype)
 ```
 
-## Baron and Kenny procedure 
+### Baron and Kenny procedure 
 
 We show how to perform Baron and Kenny procedure to test that the effect of exposure on the phenotype is mediated by the first "epigenetic" marker.
 
@@ -51,5 +51,5 @@ Same conclusion as before.
 
 # Mediation with multiple mediators
 
-Now, you should analyse the full data. Some R packages might be useful (or not) including [fdrtool](https://cran.r-project.org/web/packages/fdrtool/index.html), and [qvalue](http://bioconductor.org/packages/release/bioc/html/qvalue.html), [hima](https://github.com/YinanZheng/HIMA).
+Now, you should analyse the full data that include mulliple mediators. Some R packages might be useful (or not) including [fdrtool](https://cran.r-project.org/web/packages/fdrtool/index.html), and [qvalue](http://bioconductor.org/packages/release/bioc/html/qvalue.html), [hima](https://github.com/YinanZheng/HIMA).
 

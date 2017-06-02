@@ -1,13 +1,13 @@
 # mediation-challenge
-Repository for the Epigenetic and High-Dimension Mediation Data Challenge (Aussois, June 7-9 2017)
+Repository for the [Epigenetic and High-Dimension Mediation Data Challenge](https://data-institute.univ-grenoble-alpes.fr/events/epigenetic-high-dimension-mediation-data-challenge-710076.htm) (Aussois, June 7-9 2017)
 
-##  1. Installation of software
+##  1. Install software
 
 ### Installing R and R-studio
-To participate to the challenge, you need to install [R](http://google.com) on your computer. To make R easier to use, we suggest to install [RStudio](https://www.rstudio.com/), which is an integrated development environment (IDE) for R.
+To participate to the challenge, you need to install [R](https://cran.r-project.org/) on your computer. To make R easier to use, we suggest to install [RStudio](https://www.rstudio.com/), which is an integrated development environment (IDE) for R.
 
 ### Installing R packages
-To install R packages that are useful for the challenge, copy and paste in R the following piece of code
+To install R packages that are useful for the data challenge, copy and paste in R the following pieces of code
 
 ```r
 #Install R packages for the Epigenetic & High-Dimension Mediation Data Challenge
@@ -37,7 +37,7 @@ source("http://bioconductor.org/biocLite.R")
 biocLite("qvalue")
 ```
 
-##  2. Downloading the dataset for challenges 1 and 2
+##  2. Download datasets for challenges 1 and 2
 
 Dataset for the 1st challenge and 2nd challenge can be loaded in R using the following pieces of code.
 
@@ -50,14 +50,14 @@ data1<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/m
 data2<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge2.txt",header=TRUE,data.table=FALSE)
 ```
 
-## 3. Making a team
+## 3. Form a team
 
 To participate to the challenge, you should form teams. A team can be composed of 1, 2, or 3 participants. Once you have chosen a name for your team, send an email to [Michael Blum](mailto:michael.blum@univ-grenoble-alpes.fr) using "team mediation 2017" as email subject. A key for your team will then be sent to you by email.
 
 
-## 4. Submission of markers involved in mediation
+## 4. Submit markers involved in mediation
 
-The objective of the two data challenges is to find markers that are involved in the [mediation](https://en.wikipedia.org/wiki/Mediation_(statistics)) of a health outcome by a factor of exposure. For instance, you are asked to find in the 2nd data challenge the methylation markers that are involved in the mediation of skin cancer by sun exposure.
+The objective of the two data challenges is to find markers that are involved in the [mediation](https://en.wikipedia.org/wiki/Mediation_(statistics)) of a health outcome by a factor of exposure. For instance, you are asked to find, in the 2nd data challenge, the methylation markers that are involved in the mediation of skin cancer by sun exposure.
 
 To submit a list of markers involved in mediation, you should use [the submission website](http://176.31.253.205/shiny/mediation-challenge/shiny-app/). An example of submission file containing a list of markers involved in mediation is contained in the file [mysubmission.txt]()). 
 
