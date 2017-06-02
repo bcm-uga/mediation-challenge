@@ -63,11 +63,13 @@ To submit a list of markers involved in mediation, you should use [the submissio
 
 ## 5. Evaluation
 
-The ranking of the participants will be based on the $F_1$ score. The $F_1$ score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved mediation, whic are found in the submitted list. The $F_1$ score is equal to the harmonic mean of the power and of one minus the false discovery rate
+The ranking of the participants will be based on the [F1 score](https://en.wikipedia.org/wiki/F1_score). The F1 score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved mediation, whic are found in the submitted list. The $F_1$ score is equal to the harmonic mean of the power and of one minus the false discovery rate
 $$
 F_1 = 2 \cdot \frac{\mathrm{power} \cdot (1-\mathrm{FDR})}{\mathrm{power} + (1-\mathrm{FDR})}.
 $$
 
+
+![equation](http://latex.codecogs.com/gif.latex?%24%24%20F_1%20%3D%202%20%5Ccdot%20%5Cfrac%7B%5Cmathrm%7Bpower%7D%20%5Ccdot%20%281-%5Cmathrm%7BFDR%7D%29%7D%7B%5Cmathrm%7Bpower%7D%20&plus;%20%281-%5Cmathrm%7BFDR%7D%29%7D.%20%24%24)
 ## 6. Miscellaneous
 
 We provide some files below to show examples of mediation analysis in R.
