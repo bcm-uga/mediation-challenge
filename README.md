@@ -87,6 +87,6 @@ A graphic showing your mediation analysis will be returned to you by mail.
 
 We provide some files to show examples of mediation analysis in R.
 
-[Baron and Kenny procedure and Sobel test in R](htmlpreview.github.io/https://github.com/BioShock38/mediation-challenge/blob/master/Baron_Kenny_Sobel.html) 
+[Baron and Kenny procedure and Sobel test in R]( http://htmlpreview.github.io/?https://github.com/BioShock38/mediation-challenge/blob/master/Baron_Kenny_Sobel.html) 
 
 [Mediation analysis and epigenome-wide association studies](https://github.com/BioShock38/mediation-challenge/blob/master/Aussois2017_Olivier_Francois.Rpres) 
