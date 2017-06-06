@@ -3,7 +3,9 @@ title: "Mediation with a single mediator "
 subtitle: "using Baron and Kenny procedure and Sobel test"
 author: "Michael Blum"
 date: "June, 2, 2017"
-output: ioslides_presentation
+output:
+  ioslides_presentation:
+    css: styles.css
 ---
 ## Download and read the data file stored on github
 
