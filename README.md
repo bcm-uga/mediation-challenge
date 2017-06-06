@@ -52,7 +52,9 @@ data2<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/m
 
 ## 3. Form a team
 
-To participate to the challenge, you should form teams. A team can be composed of 1, 2, or 3 participants. Once you have chosen a name for your team, send an email to [Michael Blum](mailto:michael.blum@univ-grenoble-alpes.fr) using "team mediation 2017" as email subject. A key for your team will then be sent to you by email.
+A [tutorial](https://github.com/BioShock38/mediation-challenge/blob/master/submit.pdf) provides details about how to form a team and how to submit lists of markers.
+
+To participate to the challenge, you should form teams. A team can be composed of 1, 2, or 3 participants. Once you have chosen a name for your team, send an email to [Florian Privé](mailto:florian.prive@univ-grenoble-alpes.fr) using "team mediation 2017" as email subject. A key for your team will then be sent to you by email.
 
 
 ## 4. Submit markers involved in mediation
