@@ -102,30 +102,30 @@
 
 <pre class = 'prettyprint lang-r'>require(data.table)
 nb_med&lt;-5000
-if (!file.exists(&quot;challengex.txt&quot;))
-  download.file(&quot;https://goo.gl/iLFGeC&quot;,destfile=&quot;challengex.txt&quot;)
-data1&lt;-fread(&quot;challengex.txt&quot;,header=TRUE,data.table=FALSE)
+if (!file.exists(&quot;challenge1.txt&quot;))
+  download.file(&quot;https://goo.gl/iLFGeC&quot;,destfile=&quot;challenge1.txt&quot;)
+data1&lt;-fread(&quot;challenge1.txt&quot;,header=TRUE,data.table=FALSE)
 print(dim(data1))</pre>
 
 <pre >## [1]  500 5002</pre>
 
 <pre class = 'prettyprint lang-r'>cor(data1$exposure,data1$phenotype)</pre>
 
-<pre >## [1] 0.1753189</pre>
+<pre >## [1] -0.3200665</pre>
 
 </article></slide><slide class=''><hgroup><h2>Step 1 of Baron and Kenny procedure</h2></hgroup><article  id="step-1-of-baron-and-kenny-procedure">
 
 <p>We show how to perform Baron and Kenny procedure to test that the effect of exposure on the phenotype is mediated by the first &quot;epigenetic&quot; marker.</p>
 
-<p>We start by <a href='https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation' title=''>Step 1 of Baron and Kenny method</a> to test that the exposure is a significant predictor of the phenotype.</p>
+<p>We start by <a href='https://goo.gl/NG0yro' title=''>Step 1 of Baron and Kenny method</a> to test that the exposure is a significant predictor of the phenotype.</p>
 
 <pre class = 'prettyprint lang-r'>step1&lt;-summary(lm(phenotype~exposure,data=data1))</pre>
 
-<p>We find that the effect of <em>exposure</em> on <em>phenotype</em> is significant because the P-value is equal to 0.000081.</p>
+<p>We find that the effect of <em>exposure</em> on <em>phenotype</em> is significant because the P-value is equal to 0.000000.</p>
 
 </article></slide><slide class=''><hgroup><h2>Step 2 and 3 of Baron and Kenny procedure</h2></hgroup><article  id="step-2-and-3-of-baron-and-kenny-procedure">
 
-<p>Then, we perform <a href='https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation' title=''>Step 2 and 3 of Baron and Kenny procedure</a>.</p>
+<p>Then, we perform <a href='https://goo.gl/NG0yro' title=''>Step 2 and 3 of Baron and Kenny procedure</a>.</p>
 
 <pre class = 'prettyprint lang-r'>x&lt;-1
 p_step2&lt;-coef(summary(lm(data1[,x]~data1$exposure)))[2,&quot;Pr(&gt;|t|)&quot;]
@@ -133,7 +133,7 @@ p_step3&lt;-coef(summary(
   lm(data1$phenotype~data1[,x]+data1$exposure)))[2,&quot;Pr(&gt;|t|)&quot;]
 cat(&quot;P-value Step 2 &quot;,p_step2,&quot;, P-value Step 3 &quot;,p_step3,&quot;\n&quot;)</pre>
 
-<pre >## P-value Step 2  0.5180053 , P-value Step 3  0.03814963</pre>
+<pre >## P-value Step 2  0.3864717 , P-value Step 3  0.3987502</pre>
 
 <p>Because there is one P-value larger than \(0.05\), we conclude that there is no evidence that the first marker is involved in mediation.</p>
 
@@ -147,7 +147,7 @@ z_sobel&lt;-sobel(
 p_sobel&lt;-2*pnorm(abs(z_sobel),lower.tail=F)
 cat(&quot;P-value Sobel&quot;,p_sobel,&quot;\n&quot;)</pre>
 
-<pre >## P-value Sobel 0.5367939</pre>
+<pre >## P-value Sobel 0.5452384</pre>
 
 <p>Same conclusion as before.</p>
 
