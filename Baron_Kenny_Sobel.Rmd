@@ -1,12 +1,15 @@
 ---
-title: "Mediation with a single mediator "
-subtitle: "using Baron and Kenny procedure and Sobel test"
+title: "Mediation analysis"
+subtitle: "Baron and Kenny procedure, Sobel test, and 2 data challenges"
 author: "Michael Blum"
 date: "June, 2, 2017"
 output:
   ioslides_presentation:
     css: styles.css
 ---
+
+# Mediation with a single mediator 
+
 ## Download and read the data file stored on github
 
 ```{r,warning=FALSE,message=FALSE}
@@ -54,6 +57,17 @@ p_sobel<-2*pnorm(abs(z_sobel),lower.tail=F)
 cat("P-value Sobel",p_sobel,"\n")
 ```
 Same conclusion as before.
+
+# Mediation with multiple mediators 
+
+## Challenges 1 and 2 | epigenetic mediation of sun exposure on skin cancer risk
+
+![](sunexposure.jpg)
+
+## Challenges 1 and 2
+- Objective: Find the epigenetic markers involved in mediation.
+- Main difficulty: There are a large number of epigenetic markers ($5,000$ in challenge 1) (**High-Dimension** Mediation Data Challenge).
+- Evaluation: the ranking of the participants will be based on the $F1$ score that depends on false discovery rate (FDR) and of statistical power.
 
 ## Mediation with multiple mediators
 
