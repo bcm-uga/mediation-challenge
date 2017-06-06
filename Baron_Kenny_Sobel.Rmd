@@ -21,7 +21,7 @@ cor(data1$exposure,data1$phenotype)
 
 We show how to perform Baron and Kenny procedure to test that the effect of exposure on the phenotype is mediated by the first "epigenetic" marker.
 
-We start by [Step 1 of Baron and Kenny method](https://en.wikipedia.org/wiki/Mediation_(statistics)) to test that the exposure is a significant predictor of the phenotype.
+We start by [Step 1 of Baron and Kenny method](https://goo.gl/NG0yro) to test that the exposure is a significant predictor of the phenotype.
 
 ```{r}
 step1<-summary(lm(phenotype~exposure,data=data1))
@@ -31,7 +31,7 @@ We find that the effect of *exposure* on  *phenotype* is significant because the
 
 ## Step 2 and 3 of Baron and Kenny procedure 
 
-Then, we perform [Step 2 and 3 of Baron and Kenny procedure](https://en.wikipedia.org/wiki/Mediation_(statistics)).
+Then, we perform [Step 2 and 3 of Baron and Kenny procedure](https://goo.gl/NG0yro).
 ```{r}
 x<-1
 p_step2<-coef(summary(lm(data1[,x]~data1$exposure)))[2,"Pr(>|t|)"]
