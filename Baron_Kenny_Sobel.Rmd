@@ -10,9 +10,9 @@ output: ioslides_presentation
 ```{r,warning=FALSE,message=FALSE}
 require(data.table)
 nb_med<-5000
-if (!file.exists("challengex.txt"))
-  download.file("https://goo.gl/iLFGeC",destfile="challengex.txt")
-data1<-fread("challengex.txt",header=TRUE,data.table=FALSE)
+if (!file.exists("challenge1.txt"))
+  download.file("https://goo.gl/iLFGeC",destfile="challenge1.txt")
+data1<-fread("challenge1.txt",header=TRUE,data.table=FALSE)
 print(dim(data1))
 cor(data1$exposure,data1$phenotype)
 ```
@@ -21,7 +21,7 @@ cor(data1$exposure,data1$phenotype)
 
 We show how to perform Baron and Kenny procedure to test that the effect of exposure on the phenotype is mediated by the first "epigenetic" marker.
 
-We start by [Step 1 of Baron and Kenny method](https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation) to test that the exposure is a significant predictor of the phenotype.
+We start by [Step 1 of Baron and Kenny method](https://en.wikipedia.org/wiki/Mediation_(statistics)) to test that the exposure is a significant predictor of the phenotype.
 
 ```{r}
 step1<-summary(lm(phenotype~exposure,data=data1))
@@ -31,7 +31,7 @@ We find that the effect of *exposure* on  *phenotype* is significant because the
 
 ## Step 2 and 3 of Baron and Kenny procedure 
 
-Then, we perform [Step 2 and 3 of Baron and Kenny procedure](https://en.wikipedia.org/wiki/Mediation_(statistics)#Baron_and_Kenny.27s_.281986.29_steps_for_mediation).
+Then, we perform [Step 2 and 3 of Baron and Kenny procedure](https://en.wikipedia.org/wiki/Mediation_(statistics)).
 ```{r}
 x<-1
 p_step2<-coef(summary(lm(data1[,x]~data1$exposure)))[2,"Pr(>|t|)"]
@@ -44,7 +44,6 @@ Because there is one P-value larger than $0.05$, we conclude that there is no ev
 ## Including Sobel test in Baron and Kenny procedure 
 
 The P-value of the [Sobel test](https://en.wikipedia.org/wiki/Sobel_test) is usually included as a fourth condition in Baron and Kenny procedure (see e.g.  [Kupers et al. 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/)). The Sobel statistic is computed to test that the product of the effect of the exposure on the mediator and the effect of the mediator on the phenotype (while controlling for exposure) is different from 0.
-
 ```{r,message=FALSE}
 require(multilevel)
 z_sobel<-sobel(
