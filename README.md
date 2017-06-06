@@ -19,8 +19,8 @@ install.packages("data.table")
 install.packages("fdrtool")
 
 #Package to make an R developer's life easier
-install.packages(devtools)
-install.packages(tidyverse)
+install.packages("devtools")
+install.packages("tidyverse")
 
 #Package to perform mediation analysis with multiple mediators
 devtools::install_github("YinanZheng/HIMA")
