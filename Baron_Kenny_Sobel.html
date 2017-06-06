@@ -112,9 +112,9 @@ print(dim(data1))</pre>
 
 <pre >## [1]  500 5002</pre>
 
-<pre class = 'prettyprint lang-r'>cor(data1$exposure,data1$phenotype)</pre>
+<pre class = 'prettyprint lang-r'>cor(data1$exposure,data1$phenotype)^2</pre>
 
-<pre >## [1] -0.3200665</pre>
+<pre >## [1] 0.1024425</pre>
 
 </article></slide><slide class=''><hgroup><h2>Step 1 of Baron and Kenny procedure</h2></hgroup><article  id="step-1-of-baron-and-kenny-procedure">
 
@@ -140,9 +140,9 @@ cat(&quot;P-value Step 2 &quot;,p_step2,&quot;, P-value Step 3 &quot;,p_step3,&q
 
 <p>Because there is one P-value larger than \(0.05\), we conclude that there is no evidence that the first marker is involved in mediation.</p>
 
-</article></slide><slide class=''><hgroup><h2>Including Sobel test in Baron and Kenny procedure</h2></hgroup><article  id="including-sobel-test-in-baron-and-kenny-procedure">
+</article></slide><slide class=''><hgroup><h2>Including Sobel test</h2></hgroup><article  id="including-sobel-test">
 
-<p>The P-value of the <a href='https://en.wikipedia.org/wiki/Sobel_test' title=''>Sobel test</a> is usually included as a fourth condition in Baron and Kenny procedure (see e.g. <a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/' title=''>Kupers et al. 2015</a>). The Sobel statistic is computed to test that the product of the effect of the exposure on the mediator and the effect of the mediator on the phenotype (while controlling for exposure) is different from 0.</p>
+<p>The P-value of the <a href='https://en.wikipedia.org/wiki/Sobel_test' title=''>Sobel test</a> is usually included as a fourth condition in Baron and Kenny procedure (<a href='https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/' title=''>Kupers et al. 2015</a>). The Sobel statistic is computed to test that the product of the effect of the exposure on the mediator and the effect of the mediator on the phenotype (while controlling for exposure) is different from 0.</p>
 
 <pre class = 'prettyprint lang-r'>require(multilevel)
 z_sobel&lt;-sobel(
