@@ -43,11 +43,15 @@ Dataset for the 1st challenge and 2nd challenge can be loaded in R using the fol
 
 ```r
 require(data.table)
-data1<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge1.txt",header=TRUE,data.table=FALSE)
+if (!file.exists("challenge1.txt"))
+  download.file("https://goo.gl/iLFGeC",destfile="challenge1.txt")
+data1<-fread("challenge1.txt",header=TRUE,data.table=FALSE)
 ```
 
 ```r
-data2<-fread("https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge2.txt",header=TRUE,data.table=FALSE)
+if (!file.exists("challenge2.txt"))
+  download.file("https://goo.gl/iLFGeC",destfile="challenge2.txt")
+data2<-fread("challenge2.txt",header=TRUE,data.table=FALSE)
 ```
 
 ## 3. Form a team
@@ -68,7 +72,18 @@ To submit a list of markers involved in mediation, you should use [the submissio
 The ranking of the participants will be based on the [F1 score](https://en.wikipedia.org/wiki/F1_score). The F1 score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved in mediation, which are found in the submitted list. The F1 score is equal to the harmonic mean of the power and of one minus the false discovery rate
 
 ![equation](http://latex.codecogs.com/gif.latex?%24%24%20F_1%20%3D%202%20%5Ccdot%20%5Cfrac%7B%5Cmathrm%7Bpower%7D%20%5Ccdot%20%281-%5Cmathrm%7BFDR%7D%29%7D%7B%5Cmathrm%7Bpower%7D%20&plus;%20%281-%5Cmathrm%7BFDR%7D%29%7D.%20%24%24)
-## 6. Miscellaneous
+
+## 6. Result vizualization
+
+At the end of each challenge, send an email to [Florian Privé](mailto:florian.prive@univ-grenoble-alpes.fr) with a text file containing the list of P-values (one p-value per line).
+
+```r
+write(mypvalue,file="pval_nameofmyteam_challengenumber.txt")
+```
+
+A graphic showing your mediation analysis will be returned to you by mail.
+
+## 7. Miscellaneous
 
 We provide some files to show examples of mediation analysis in R.
 
