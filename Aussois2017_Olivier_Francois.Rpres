@@ -1,3 +1,12 @@
+---
+title: "ewas"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 Removing Unwanted Variation in Epigenome-Wide Association Studies 
 ========================================================
 author: Olivier François (Univ. Grenoble-Alpes)
@@ -49,7 +58,8 @@ link.to.challenge2 <- "https://raw.githubusercontent.com/BioShock38/mediation-ch
 
 ```{r}
 data2 <- read.table(link.to.challenge2, stringsAsFactors = FALSE, header = TRUE)
-Expset <- data2[,2:1496]
+#data2 <- read.table(link.to.challenge2)
+Expset <- data2[,2:1497]
 ```
 
 
@@ -148,9 +158,13 @@ mycovfefe <- function(Expset, phenotype, exposure, k= NULL, fdr = 0.05){
   
   Em <- as.matrix(Expset)
   y <- as.numeric(phenotype)
-  if (!is.factor(exposure))  x <- as.numeric(exposure) 
-  else x <- exposure 
   
+  if (is.numeric(exposure)){
+    x <- exposure
+  } else {
+    x <- as.factor(exposure)
+  }
+
   if (!is.null(k)) pc <- prcomp(Em, scale = T)$x[,1:k]
   
   zx = zy = NULL
@@ -218,5 +232,3 @@ Challenge 2
 - Send your candidate list to the web application.
 
 - This **.Rmd presentation** contains all scripts for reproducibility
-
-
