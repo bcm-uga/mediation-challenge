@@ -1,7 +1,3 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Removing Unwanted Variation in Epigenome-Wide Association Studies 
 ========================================================
 author: Olivier François (Univ. Grenoble-Alpes)
