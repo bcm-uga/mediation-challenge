@@ -47,7 +47,7 @@ Methylation Array (reduced data set)
 - Sun exposure, cancer phenotype, age, gender, tissue type
 
 
-```{r, echo = FALSE}
+```r
 link.to.challenge2 <- "https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge2.txt"
 ```
 
