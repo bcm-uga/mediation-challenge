@@ -83,7 +83,12 @@ write(mypvalue,file="pval_nameofmyteam_challengenumber.txt")
 
 A graphic showing your mediation analysis will be returned to you by mail.
 
-## 7. Miscellaneous
+## 7. Debriefing
+
+At the end of each challenge, prepare 3 slides for debriefing, which contain Materials and Methods, Results and Discussion.
+
+
+## 8. Miscellaneous
 
 We provide some files to show examples of mediation analysis in R.
 

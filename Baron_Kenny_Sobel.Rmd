@@ -19,7 +19,7 @@ if (!file.exists("challenge1.txt"))
   download.file("https://goo.gl/iLFGeC",destfile="challenge1.txt")
 data1<-fread("challenge1.txt",header=TRUE,data.table=FALSE)
 print(dim(data1))
-cor(data1$exposure,data1$phenotype)
+cor(data1$exposure,data1$phenotype)^2
 ```
 
 ## Step 1 of Baron and Kenny procedure 
@@ -46,9 +46,8 @@ cat("P-value Step 2 ",p_step2,", P-value Step 3 ",p_step3,"\n")
 ```
 Because there is one P-value larger than $0.05$, we conclude that there is no evidence that the first marker is involved in mediation.
 
-## Including Sobel test in Baron and Kenny procedure 
-
-The P-value of the [Sobel test](https://en.wikipedia.org/wiki/Sobel_test) is usually included as a fourth condition in Baron and Kenny procedure (see e.g.  [Kupers et al. 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/)). The Sobel statistic is computed to test that the product of the effect of the exposure on the mediator and the effect of the mediator on the phenotype (while controlling for exposure) is different from 0.
+## Including Sobel test
+The P-value of the [Sobel test](https://en.wikipedia.org/wiki/Sobel_test) is usually included as a fourth condition in Baron and Kenny procedure ([Kupers et al. 2015](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4588868/)). The Sobel statistic is computed to test that the product of the effect of the exposure on the mediator and the effect of the mediator on the phenotype (while controlling for exposure) is different from 0.
 ```{r,message=FALSE}
 require(multilevel)
 z_sobel<-sobel(
