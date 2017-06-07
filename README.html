@@ -140,8 +140,8 @@ install.packages(&quot;data.table&quot;)
 install.packages(&quot;fdrtool&quot;)
 
 #Package to make an R developer's life easier
-install.packages(devtools)
-install.packages(tidyverse)
+install.packages(&quot;devtools&quot;)
+install.packages(&quot;tidyverse&quot;)
 
 #Package to perform mediation analysis with multiple mediators
 devtools::install_github(&quot;YinanZheng/HIMA&quot;)
@@ -167,7 +167,7 @@ if (!file.exists(&quot;challenge1.txt&quot;))
 data1&lt;-fread(&quot;challenge1.txt&quot;,header=TRUE,data.table=FALSE)</code></pre>
 <pre class="r"><code>if (!file.exists(&quot;challenge2.txt&quot;))
   download.file(&quot;https://goo.gl/OzDSRO&quot;,destfile=&quot;challenge2.txt&quot;)
-data2&lt;-fread(&quot;challenge2.txt&quot;,header=TRUE,data.table=FALSE)</code></pre>
+data2&lt;-read.table(&quot;challenge2.txt&quot;)</code></pre>
 </div>
 <div id="form-a-team" class="section level2">
 <h2>3. Form a team</h2>

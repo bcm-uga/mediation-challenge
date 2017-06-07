@@ -51,7 +51,7 @@ data1<-fread("challenge1.txt",header=TRUE,data.table=FALSE)
 ```r
 if (!file.exists("challenge2.txt"))
   download.file("https://goo.gl/OzDSRO",destfile="challenge2.txt")
-data2<-fread("challenge2.txt",header=TRUE,data.table=FALSE)
+data2<-read.table("challenge2.txt")
 ```
 
 ## 3. Form a team
