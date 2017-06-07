@@ -131,7 +131,7 @@ Mediation analysis with methylation arrays (my attempt)
 A **four-step 'outlier' detection** approach:
 
 - Compute z-scores (zx) for the association **Expset ~ exposure**
-- Compute z-scores (zy) for the association **Expset  phenotype**
+- Compute z-scores (zy) for the association **Expset ~ phenotype**
 - Combine zx and zy linearly using **PCA**
 - Compute p-values from the resulting scores by using **fdrtool** 
 
