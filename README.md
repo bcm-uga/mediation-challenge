@@ -28,13 +28,14 @@ devtools::install_github("YinanZheng/HIMA")
 #Package to compute Sobel test
 install.packages("multilevel")
 
-#Package for Confounder Adjusted Testing 
-install.packages("cate")
-
 #Package q-value for controlling FDR
 #Try https:// or http:// 
 source("http://bioconductor.org/biocLite.R")
 biocLite("qvalue")
+biocLite("sva")
+
+#Package for Confounder Adjusted Testing 
+install.packages("cate")
 ```
 
 ##  2. Download datasets for challenges 1 and 2
