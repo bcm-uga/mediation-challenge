@@ -48,8 +48,8 @@ link.to.challenge2 <- "https://raw.githubusercontent.com/BioShock38/mediation-ch
 ```
 
 ```{r}
-data2 <- read.table(link.to.challenge2)
-Expset <- data2[,1:1496]
+data2 <- read.table(link.to.challenge2, stringsAsFactors = FALSE, header = TRUE)
+Expset <- data2[,2:1496]
 ```
 
 
