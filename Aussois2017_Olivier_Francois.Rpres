@@ -167,7 +167,7 @@ mycovfefe <- function(Expset, phenotype, exposure, k= NULL, fdr = 0.05){
     for (i in 1:ncol(Em)){ 
       mod <- lm(Em[,i] ~ x)   
       zx[i] <- summary(mod)$coeff[2,3]
-      mod <- glm(y ~  Em[,i] + pc , family = "binomial")  
+      mod <- glm(y ~  Em[,i] + x + pc , family = "binomial")  
       zy[i] <- summary(mod)$coeff[2,3]
       }  
   
