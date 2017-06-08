@@ -1,7 +1,3 @@
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Removing Unwanted Variation in Epigenome-Wide Association Studies 
 ========================================================
 author: Olivier François (Univ. Grenoble-Alpes)
@@ -47,11 +43,11 @@ Methylation Array (reduced data set)
 - Sun exposure, cancer phenotype, age, gender, tissue type
 
 
-```{r, echo = FALSE}
+```r
 link.to.challenge2 <- "https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge2.txt"
 ```
 
-```{r}
+```r
 data2 <- read.table(link.to.challenge2, stringsAsFactors = FALSE, header = TRUE)
 #data2 <- read.table(link.to.challenge2)
 Expset <- data2[,2:1497]
@@ -72,7 +68,7 @@ Confounding factors
 
 **Evaluating structure in the methylation array**:
 - Perform a principal component analysis of the methylation data
-```{r, echo = FALSE}
+```r
 pca <- prcomp(Expset, scale = T) 
 plot(pca$x, cex = 2, col = "blue",pch = 19)
 ```
@@ -80,7 +76,7 @@ plot(pca$x, cex = 2, col = "blue",pch = 19)
 Clusters explained by tissue type and age
 ========================================================
 
-```{r, echo=FALSE}
+```r
 par(mfrow = c(1,2))
 plot(pca$x, col = factor(data2$tissue) , main = "Tissue",pch = 19)
 younger  <- data2$age < 50
@@ -91,7 +87,7 @@ plot(factor(younger) , pca$x[,3], col=c("orange", "lightblue"), main = "Age", xl
 Removing systematic variation from the EWAS (of phenotype)
 ========================================================
 **Correction with 2 principal components**:
-```{r, echo=FALSE}
+```r
 par(mfrow = c(1,2))
 p <- ncol(Expset)
 pc1 = pca$x[,1]
@@ -113,7 +109,7 @@ hist(pvalue.corrected, col = "orange", main ="")
 Using the R package "cate"
 ========================================================
 
-```{r, echo=FALSE}
+```r
 require("cate")
 par(mfrow = c(1,2))
 mod.cate <- cate(~ y, data.frame(y), Y = as.matrix(Expset), r = 1)
@@ -130,8 +126,8 @@ Mediation analysis with methylation arrays (my attempt)
 
 A **four-step 'outlier' detection** approach:
 
-- Compute z-scores (zx) for the association **Expset $\sim$ exposure**
-- Compute z-scores (zy) for the association **Expset $\sim$ phenotype**
+- Compute z-scores (zx) for the association **Expset ~ exposure**
+- Compute z-scores (zy) for the association **Expset ~ phenotype**
 - Combine zx and zy linearly using **PCA**
 - Compute p-values from the resulting scores by using **fdrtool** 
 
@@ -143,7 +139,7 @@ My R function
 **Class "covfefe"** (English translation: "the worst I can do"): 
 - contains z-scores, pvalues and candidate probes (FDR)
 
-```{r, echo = FALSE}
+```r
 mycovfefe <- function(Expset, phenotype, exposure, k= NULL, fdr = 0.05){
   # Expset An n by p matrix (n individuals, p probes) of differential expression/methylation data  
   # phenotype A numeric vector 
@@ -189,7 +185,7 @@ plot.covfefe <- function(obj){
 ```
 
 
-```{r}
+```r
 obj <- mycovfefe(
         Expset, 
         phenotype = data2$phenotype, 
@@ -202,7 +198,7 @@ obj <- mycovfefe(
 Results: Histogram of p-values
 ========================================================
 
-```{r}
+```r
 p.values = obj$p.values
 hist(p.values, col = "green3")
 ```
@@ -211,7 +207,7 @@ hist(p.values, col = "green3")
 Results: P-value plot (log10) 
 ========================================================
 
-```{r, echo = FALSE}
+```r
 plot(obj)
 ```
 
