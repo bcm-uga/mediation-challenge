@@ -1,6 +1,14 @@
 # mediation-challenge
 Repository for the [Epigenetic and High-Dimension Mediation Data Challenge](https://data-institute.univ-grenoble-alpes.fr/events/epigenetic-high-dimension-mediation-data-challenge-710076.htm) (Aussois, June 7-9 2017)
 
+## View points
+
+![](DSC_0297.JPG)
+![](DSC_0299.JPG)
+![](DSC_0304.JPG)
+![](DSC_0307.JPG)
+
+
 ##  1. Install software
 
 ### Install R and R-studio
