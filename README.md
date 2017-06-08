@@ -19,8 +19,8 @@ install.packages("data.table")
 install.packages("fdrtool")
 
 #Package to make an R developer's life easier
-install.packages(devtools)
-install.packages(tidyverse)
+install.packages("devtools")
+install.packages("tidyverse")
 
 #Package to perform mediation analysis with multiple mediators
 devtools::install_github("YinanZheng/HIMA")
@@ -28,13 +28,14 @@ devtools::install_github("YinanZheng/HIMA")
 #Package to compute Sobel test
 install.packages("multilevel")
 
-#Package for Confounder Adjusted Testing 
-install.packages("cate")
-
 #Package q-value for controlling FDR
 #Try https:// or http:// 
 source("http://bioconductor.org/biocLite.R")
 biocLite("qvalue")
+biocLite("sva")
+
+#Package for Confounder Adjusted Testing 
+install.packages("cate")
 ```
 
 ##  2. Download datasets for challenges 1 and 2
@@ -50,8 +51,8 @@ data1<-fread("challenge1.txt",header=TRUE,data.table=FALSE)
 
 ```r
 if (!file.exists("challenge2.txt"))
-  download.file("https://goo.gl/iLFGeC",destfile="challenge2.txt")
-data2<-fread("challenge2.txt",header=TRUE,data.table=FALSE)
+  download.file("https://goo.gl/OzDSRO",destfile="challenge2.txt")
+data2<-read.table("challenge2.txt")
 ```
 
 ## 3. Form a team

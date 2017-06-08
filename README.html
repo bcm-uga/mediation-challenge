@@ -121,16 +121,16 @@ $(document).ready(function () {
 
 <div id="mediation-challenge" class="section level1">
 <h1>mediation-challenge</h1>
-<p>Repository for the Epigenetic and High-Dimension Mediation Data Challenge (Aussois, June 7-9 2017)</p>
-<div id="installation-of-software" class="section level2">
-<h2>1. Installation of software</h2>
-<div id="installing-r-and-r-studio" class="section level3">
-<h3>Installing R and R-studio</h3>
-<p>To participate to the challenge, you need to install <a href="http://google.com">R</a> on your computer. To make R easier to use, we suggest to install <a href="https://www.rstudio.com/">RStudio</a>, which is an integrated development environment (IDE) for R.</p>
+<p>Repository for the <a href="https://data-institute.univ-grenoble-alpes.fr/events/epigenetic-high-dimension-mediation-data-challenge-710076.htm">Epigenetic and High-Dimension Mediation Data Challenge</a> (Aussois, June 7-9 2017)</p>
+<div id="install-software" class="section level2">
+<h2>1. Install software</h2>
+<div id="install-r-and-r-studio" class="section level3">
+<h3>Install R and R-studio</h3>
+<p>To participate to the challenge, you need to install <a href="https://cran.r-project.org/">R</a> on your computer. To make R easier to use, we suggest to install <a href="https://www.rstudio.com/">RStudio</a>, which is an integrated development environment (IDE) for R.</p>
 </div>
-<div id="installing-r-packages" class="section level3">
-<h3>Installing R packages</h3>
-<p>To install R packages that are useful for the challenge, copy and paste in R the following piece of code</p>
+<div id="install-r-packages" class="section level3">
+<h3>Install R packages</h3>
+<p>To install R packages that are useful for the data challenge, copy and paste in R the following pieces of code</p>
 <pre class="r"><code>#Install R packages for the Epigenetic &amp; High-Dimension Mediation Data Challenge
 
 #Package to read large table
@@ -140,8 +140,8 @@ install.packages(&quot;data.table&quot;)
 install.packages(&quot;fdrtool&quot;)
 
 #Package to make an R developer's life easier
-install.packages(devtools)
-install.packages(tidyverse)
+install.packages(&quot;devtools&quot;)
+install.packages(&quot;tidyverse&quot;)
 
 #Package to perform mediation analysis with multiple mediators
 devtools::install_github(&quot;YinanZheng/HIMA&quot;)
@@ -158,30 +158,50 @@ source(&quot;http://bioconductor.org/biocLite.R&quot;)
 biocLite(&quot;qvalue&quot;)</code></pre>
 </div>
 </div>
-<div id="downloading-the-dataset-for-challenges-1-and-2" class="section level2">
-<h2>2. Downloading the dataset for challenges 1 and 2</h2>
+<div id="download-datasets-for-challenges-1-and-2" class="section level2">
+<h2>2. Download datasets for challenges 1 and 2</h2>
 <p>Dataset for the 1st challenge and 2nd challenge can be loaded in R using the following pieces of code.</p>
 <pre class="r"><code>require(data.table)
-data1&lt;-fread(&quot;https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge1.txt&quot;,header=TRUE,data.table=FALSE)</code></pre>
-<pre class="r"><code>data2&lt;-fread(&quot;https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/data/challenge2.txt&quot;,header=TRUE,data.table=FALSE)</code></pre>
+if (!file.exists(&quot;challenge1.txt&quot;))
+  download.file(&quot;https://goo.gl/iLFGeC&quot;,destfile=&quot;challenge1.txt&quot;)
+data1&lt;-fread(&quot;challenge1.txt&quot;,header=TRUE,data.table=FALSE)</code></pre>
+<pre class="r"><code>if (!file.exists(&quot;challenge2.txt&quot;))
+  download.file(&quot;https://goo.gl/OzDSRO&quot;,destfile=&quot;challenge2.txt&quot;)
+data2&lt;-read.table(&quot;challenge2.txt&quot;)</code></pre>
 </div>
-<div id="making-a-team" class="section level2">
-<h2>3. Making a team</h2>
-<p>To participate to the challenge, you should form teams. A team can be composed of 1, 2, or 3 participants. Once you have chosen a name for your team, send an email to <a href="mailto:michael.blum@univ-grenoble-alpes.fr">Michael Blum</a> using “team mediation 2017” as email subject. A key for your team will then be sent to you by email.</p>
+<div id="form-a-team" class="section level2">
+<h2>3. Form a team</h2>
+<p>A <a href="https://github.com/BioShock38/mediation-challenge/blob/master/submit.pdf">tutorial</a> provides details about how to form a team and how to submit lists of markers.</p>
+<p>To participate to the challenge, you should form teams. A team can be composed of 1, 2, or 3 participants. Once you have chosen a name for your team, send an email to <a href="mailto:florian.prive@univ-grenoble-alpes.fr">Florian Privé</a> using “team mediation 2017” as email subject. A key for your team will then be sent to you by email.</p>
 </div>
-<div id="submission-of-markers-involved-in-mediation" class="section level2">
-<h2>4. Submission of markers involved in mediation</h2>
-<p>The objective of the two data challenges is to find markers that are involved in the <a href="https://en.wikipedia.org/wiki/Mediation_(statistics)">mediation</a> of a health outcome by a factor of exposure. For instance, you are asked to find in the 2nd data challenge the methylation markers that are involved in the mediation of skin cancer by sun exposure.</p>
-<p>To submit a list of markers involved in mediation, you should use <a href="http://176.31.253.205/shiny/mediation-challenge/shiny-app/">the submission website</a>. An example of submission file containing a list of markers involved in mediation is contained in the file <a href>mysubmission.txt</a>).</p>
+<div id="submit-markers-involved-in-mediation" class="section level2">
+<h2>4. Submit markers involved in mediation</h2>
+<p>The objective of the two data challenges is to find markers that are involved in the <a href="https://en.wikipedia.org/wiki/Mediation_(statistics)">mediation</a> of a health outcome by a factor of exposure. For instance, you are asked to find, in the 2nd data challenge, the methylation markers that are involved in the mediation of skin cancer by sun exposure.</p>
+<p>To submit a list of markers involved in mediation, you should use <a href="http://176.31.253.205/shiny/mediation-challenge/shiny-app/">the submission website</a>. An example of submission file containing a list of markers involved in mediation is contained in the file <a href="https://raw.githubusercontent.com/BioShock38/mediation-challenge/master/mysubmission.txt">mysubmission.txt</a>.</p>
 </div>
 <div id="evaluation" class="section level2">
 <h2>5. Evaluation</h2>
-<p>The ranking of the participants will be based on the <a href="https://en.wikipedia.org/wiki/F1_score">F1 score</a>. The <span class="math inline">\(F_1\)</span> score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved mediation, whic are found in the submitted list. The <span class="math inline">\(F_1\)</span> score is equal to the harmonic mean of the power and of one minus the false discovery rate [ F_1 = 2 . [</p>
+<p>The ranking of the participants will be based on the <a href="https://en.wikipedia.org/wiki/F1_score">F1 score</a>. The F1 score depends on the false discovery rate (FDR), which is the percentage of false positive markers in the submitted list, and of the power, which is the percentage of markers involved in mediation, which are found in the submitted list. The F1 score is equal to the harmonic mean of the power and of one minus the false discovery rate</p>
+<div class="figure">
+<embed src="data:image/gif;base64,R0lGODlh4QArALMAAP///wAAAO7u7mZmZiIiIkRERIiIiDIyMlRUVKqqqrq6uszMzHZ2dpiYmNzc3BAQECH5BAEAAAAALAAAAADhACsAAAT+EMhJq7046827/5/QgGRpSo1wrmzrvt4Az6cg03iu48ZSCQXFyzF4BAYMxqAQYACIRmRykKBAj1OGiqIw7L7gcOdgZTQCQhgjUFncAOsK4i2JTxIBH4Us7vvBDSMWaDN2FF51bBUHiIkVDwUVBlV/lZYuBQ4XhGqKAGlpcJ53AVuij3wTCwiXlgoHaIFUFQkNCZMADQRNC0ysCwQPlAaymq8PDg0Hmh4PGJwvhnSOPwGUpxMG0BPOrZUOAYIABOIGThIDIwqeyBIJzAOIDt3gVQN6Hd2DoS5rSQf6Jhii0ESgtVsEBjCrMMqbGAGlJjToBtEUOBXCJBA4JwjcQgL+QiDia0NgpAQHBJ7xa2GIVYWBE44YnOAg0wUCphyGqUgzDwA8DIUwYJVAQTdKeBIoTTAgZMQLCx6sfJJy01QJvQpo3bq1EQVDXqlRgChuIIOqFXDq7MMTawBNQAkKuegFZIItcauVEBBQbqGGLwHjWThQW04JfdfuaJuL3ltVTwngMpCu58InACCaSCxhG0vAXwEfOCc2l2cAnBXjgHiNwLUkE+Jli1jvq8tcKhh/sLnvrwaYCG6XBucl1CrVOw8yXdmAGINrmd8IR2GmgY9VAQqI8xBoLAMmo02WcMDASAEtP4pgGYpguwADu+7d0V4O+gYb8QfoZxIWRvMlV4X+8BRyFgBB4AupfHDAdLjgkMJJ1qyg24ECiUfhBwps50GEXFjYQkkTIIAWCdgh4CGB01zogQ0lrLOFHgoc9sIDZYGmIgsi3AjCgyQwkAppYoio45BEUkDAaAgE0N9iHBbp5IUioTBSTRkMENyVWCIA5AUFLAnMiU+GCUZe/DRwlg4GLAlAVFcF4OabcMYp55x01mnnnXjmqeeefPJZZYIVoJTDLWIWSuBGGQiKgZVZYrnlBBlmY+ikrYATIFU0uKHApkxR6ikYDiCggo/ZPXrSiC4YAed0n3aQY6s8tvEAmFag2upaKU7KYguK3qpYDz8EMYR6UixR0BVSKAEdsln+HNYFCwoMoORlvraSIHlnXFoCTG7MRMEcgVGAh0mAVkthA9qioGFn6YIAEwCNvMtIaI9Ecoh95hKILge8BeWbBKB4K+6AMD0A6HHVvhJLA7PcYUuDuvDiy5rBVEEMw8YAlMwyGuy7QWqnrSCNBe+yJjC8p6VGKTjikCOBObEJsg43zLwDgGxPOGYPmB5rAHK7H/jjY2LvAlBQIkrBp9Am+TI2UWYDXoQYJYjm8sRjGjlFKwrp9upvJyGSDJpMYtVErUYyesoYOAvkxW4dRBnlzk/KLQd12jdjecCCVz7qtV9QcSV4lxeAJXaB4Zx8pgVqVcvYAm+5bXQadI2jwF2wdF+gWQc9Y8CXSv9i8O5gJxtmgcq6Dvi0R5CZIpnFlV19mSabc9A5Bj+HXrhoQA6U7elNN+laHaTh/DJtTQ4lUW4Ddtxuv4BHY2NpAAQXbk/FqcLqp6wp1RQFzZlp367VV2BmINclqZ3t7XY3gQDfBRAer+WVepgNUSQRnHvwHYFPAvTJBr641zzF3E5z9qpWuVo1obXgjWRbe1KkzFWiCF4oV4YiX764ty5DxeoCEQAAOw=="></embed>
+<p class="caption">equation</p>
+</div>
+</div>
+<div id="result-vizualization" class="section level2">
+<h2>6. Result vizualization</h2>
+<p>At the end of each challenge, send an email to <a href="mailto:florian.prive@univ-grenoble-alpes.fr">Florian Privé</a> with a text file containing the list of P-values (one p-value per line).</p>
+<pre class="r"><code>write(mypvalue,file=&quot;pval_nameofmyteam_challengenumber.txt&quot;)</code></pre>
+<p>A graphic showing your mediation analysis will be returned to you by mail.</p>
+</div>
+<div id="debriefing" class="section level2">
+<h2>7. Debriefing</h2>
+<p>At the end of each challenge, prepare 3 slides for debriefing, which contain Materials and Methods, Results and Discussion.</p>
 </div>
 <div id="miscellaneous" class="section level2">
-<h2>6. Miscellaneous</h2>
-<p>We provide some files below to show examples of mediation analysis in R.</p>
-<p>Baron and Kenny and Sobel test in R:</p>
+<h2>8. Miscellaneous</h2>
+<p>We provide some files to show examples of mediation analysis in R.</p>
+<p><a href="http://htmlpreview.github.io/?https://github.com/BioShock38/mediation-challenge/blob/master/Baron_Kenny_Sobel.html">Mediation analysis: Baron and Kenny procedure, Sobel test, and 2 data challenges</a></p>
+<p><a href="https://github.com/BioShock38/mediation-challenge/blob/master/Aussois2017_Olivier_Francois.Rpres">Mediation analysis and epigenome-wide association studies</a></p>
 </div>
 </div>
 
