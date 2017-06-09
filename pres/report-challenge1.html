@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Epigenetic &amp; High-Dimension Mediation Data Challenge</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Keurcien Luu, Florian Privé &amp; Kevin Caye" />
+    <link href="libs/remark-css/example.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Epigenetic &amp; High-Dimension Mediation<br>Data Challenge
+## BCM Power Rangers
+### Keurcien Luu, Florian Privé &amp; Kevin Caye
+### June 8, 2017
+
+---
+
+
+
+
+# Our solution
+
+## According to Rémy Drouilhet
+
+
+```r
+system(paste(
+  "wget --user bcm --password bcm",
+  "http://176.31.253.205/shiny/mediation-challenge/true_markers1"))
+```
+
+```r
+--2017-06-07 15:38:17-- 
+http://176.31.253.205/shiny/mediation-challenge/trues_challenge1
+Connexion vers 176.31.253.205:80...connecté.
+requête HTTP transmise, en attente de la réponse...302 Found
+```
+
+
+```r
+write(sample(readRDS("true_markers1"), 36), "submit_trues.txt")
+```
+
+
+---
+class: inverse, center, middle
+
+# Inspiration for our REAL method
+
+## Detection of outliers and GWAS
+
+---
+
+## GWAS: iterative procedure (Segura et al., 2012)
+
+&lt;img src="segura-gwas.png" width="1485" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Our code is packaged
+
+
+```r
+data1 &lt;- data.table::fread("challenge1.txt", 
+                           header = TRUE, 
+                           data.table = FALSE)
+
+# devtools::install_github("privefl/HIMA")
+test &lt;- HIMA::hima_rec(X = data1$exposure, 
+                       Y = data1$phenotype, 
+                       M = data1[, 1:5000], 
+                       topN = 200)
+
+write(test, "submit.txt")
+```
+---
+
+## Plot of the submissions 
+
+
+```r
+library(googlesheets)
+library(dplyr)
+library(ggplot2)
+
+results &lt;- googlesheets::gs_key(
+  "1YtuLCYNugnxdeDiTabIBhoX_C_aam62nokrPRoGkUr0", 
+  lookup = FALSE, visibility = "private") %&gt;%
+  gs_read(ws = 1)
+
+MY_THEME &lt;- bigstatsr:::MY_THEME
+
+MY_THEME(
+  ggplot(results, aes(date, score, color = team)) + 
+    geom_point(size = I(4)) +
+    geom_line(size = I(2)) + 
+    scale_x_datetime(),
+  coeff = 2
+) + theme(legend.position = "top")
+```
+
+---
+
+class: center, middle
+
+&lt;img src="results.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: inverse, center, middle
+
+
+# Thanks for believing in us!
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {window.dispatchEvent(new Event('resize'));});</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
