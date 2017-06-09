@@ -7,6 +7,7 @@ Repository for the [Epigenetic and High-Dimension Mediation Data Challenge](http
 ![](DSC_0299.JPG)
 ![](DSC_0304.JPG)
 ![](DSC_0307.JPG)
+![](_DSC7873.JPG)
 
 
 ##  1. Install software
