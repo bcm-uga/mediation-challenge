@@ -1,3 +1,6 @@
+This project has been moved to https://github.com/bcm-uga/mediation-challenge
+
+
 # mediation-challenge
 Repository for the [Epigenetic and High-Dimension Mediation Data Challenge](https://data-institute.univ-grenoble-alpes.fr/events/epigenetic-high-dimension-mediation-data-challenge-710076.htm) (Aussois, June 7-9 2017)
 
